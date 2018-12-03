@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+	
+	<legend >Product Log List</legend>
+	<div>
+		{% for productlog in productlog_list.items %}
+			<hr/>
+			<h6>  <a class="mr-2" href="{{ url_for('get_productlog', id=productlog.id) }}">ProductLog ID: {{ productlog.id}}</a></h6>
+			<small> Product ID:{{ productlog.product_id }} changed on {{ productlog.datetime}} </small>
+			<p> Longitude: {{productlog.longitude}}, Latitude: {{productlog.latitude }}, elevation:{{productlog.elevation}} </p>
+		{% endfor %} 				
+		{% for page_num in productlog_list.iter_pages() %}
+			{% if page_num %}
+				{% if productlog_list.page == page_num %}
+					<a class="btn btn-info mb-4" href="{{ url_for('get_productlog_list',page=page_num) }}">{{ page_num }}</a>
+				{% else %}
+					<a class="btn btn-outline-info mb-4" href="{{ url_for('get_productlog_list',page=page_num) }}">{{ page_num }}</a>
+				{% endif %}
+			{% else %}
+			{% endif %}
+		{% endfor %} 
+	</div>		
+</div>
+{% endblock content %}

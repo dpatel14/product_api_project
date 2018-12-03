@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+	<form method="POST" action="">
+		{{ form.hidden_tag() }}
+		<fieldset class="form-group">
+			<legend class="border-bottom mb-4">New Product Log</legend>
+			<div class="form-group">		
+				<label>Select Product:</label><br/>
+				<select name="product_name" width="300px">
+					{% for x in server_list %}
+						<option value="{{ x.id }}"{% if loop.first %} SELECTED{% endif %}>{{ x.description }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group">
+				{{ form.longitude.label(class="form-control-label") }}
+				{% if form.longitude.errors %}
+					{{ form.longitude(class="form-control form-control-lg is-invalid") }}
+					<div class="invalid-feedback">
+						{% for error in form.longitude.errors %}
+							<span>{{ error }} </span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.longitude(class="form-control form-control-lg")}}
+				{% endif %}
+			</div>	
+			<div class="form-group">
+				{{ form.latitude.label(class="form-control-label") }}
+				{% if form.latitude.errors %}
+					{{ form.latitude(class="form-control form-control-lg is-invalid") }}
+					<div class="invalid-feedback">
+						{% for error in form.latitude.errors %}
+							<span>{{ error }} </span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.latitude(class="form-control form-control-lg")}}
+				{% endif %}
+			</div>	
+			<div class="form-group">
+				{{ form.elevation.label(class="form-control-label") }}
+				{% if form.elevation.errors %}
+					{{ form.elevation(class="form-control form-control-lg is-invalid") }}
+					<div class="invalid-feedback">
+						{% for error in form.elevation.errors %}
+							<span>{{ error }} </span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.elevation(class="form-control form-control-lg")}}
+				{% endif %}
+			</div>				
+		</fieldset>
+		<div class="form-group">
+			{{ form.submit(class="btn btn-outline-info")}}
+		</div>
+	</form>
+</div>
+{% endblock content %}
+				
