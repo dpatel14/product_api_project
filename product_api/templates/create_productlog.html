@@ -4,15 +4,7 @@
 	<form method="POST" action="">
 		{{ form.hidden_tag() }}
 		<fieldset class="form-group">
-			<legend class="border-bottom mb-4">New Product Log</legend>
-			<div class="form-group">		
-				<label>Select Product:</label><br/>
-				<select name="product_name" width="300px">
-					{% for x in server_list %}
-						<option value="{{ x.id }}"{% if loop.first %} SELECTED{% endif %}>{{ x.description }}</option>
-					{% endfor %}
-				</select>
-			</div>
+			<legend class="border-bottom mb-4">New Product Log</legend>			
 			<div class="form-group">
 				{{ form.longitude.label(class="form-control-label") }}
 				{% if form.longitude.errors %}

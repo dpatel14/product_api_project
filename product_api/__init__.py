@@ -11,3 +11,4 @@ ma = Marshmallow(app)
 from product_api import routes
 from product_api.products import routes
 from product_api.product_logs import routes
+from product_api.pagination import routes
